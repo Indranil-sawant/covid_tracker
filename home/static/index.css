@@ -1,0 +1,23 @@
+html, body{
+    background-color: #ACB992;
+}
+
+.container-fluid, .row{
+    background-color: #ACB992;
+    padding: 30px;
+    
+}
+
+.navbar-brand{
+    margin-left: 40px;
+}
+
+
+.d-flex{
+    margin-right: 80px;
+}
+
+table{
+    max-width: 90%;
+    margin-left: 70px;
+}
