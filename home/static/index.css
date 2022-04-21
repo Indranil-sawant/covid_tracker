@@ -21,3 +21,7 @@ table{
     max-width: 90%;
     margin-left: 70px;
 }
+
+.collapse navbar-collapse{
+    padding: 10px;
+}
