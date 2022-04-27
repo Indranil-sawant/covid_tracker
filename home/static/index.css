@@ -25,3 +25,16 @@ table{
 .collapse navbar-collapse{
     padding: 10px;
 }
+
+.time{
+    padding-left: 60px;
+}
+
+#drop{
+    background-color: #B4E197;
+}
+
+.speechnow{
+    padding-left: 40px;
+    margin-left: 40px;
+}

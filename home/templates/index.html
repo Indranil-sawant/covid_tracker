@@ -10,37 +10,56 @@
         {% load static%}
         <link rel="stylesheet" href="{% static 'index.css' %}">
         <link rel="stylesheet" href="{% static 'index.js' %}">
+      
         <script src=
         "https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js">
             </script>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-        <style> 
-         
-        </style>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" >
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" ></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> 
+       
+       
+        
     </head>
     <body>
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
           <h1> <a class="navbar-brand" href="#">Covid Tracker</a> </h1>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
+          
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Home</a>
+              <li id="home" class="nav-item">
+                <a class="nav-link active" aria-current="page"  href="">Home</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="https://covid19.who.int/">More Info</a>
+              <li id="home" class="nav-item">
+                <a class="nav-link"  href="https://covid19.who.int/">More Info</a>
               </li>
       
-              <li class="nav-item">
-                <a class="nav-link " href="">Vaccine</a>
+            
+               <li id="home" class="nav-item">
+                <div class="dropdown" id+"drop">
+                 <a class="btn btn-light dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                             Vaccines
+                 </a>
+
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+    <li><a class="dropdown-item" href="">India</a></li>
+    <li><a class="dropdown-item" href="">Other countries</a></li>
+    <li><a class="dropdown-item" href="">More info</a></li>
+  </ul> 
+</div>
+              </li>
+
+               <li class="nav-item">
+                <h5 class="nav-link ">{{date}}</h5>
               </li>
             </ul>
             <form class="d-flex">
-              <input class="form-control me-2" id = "gfg" type="search" placeholder="Search" aria-label="Search">
-              <button class="btn btn-outline-success" type="text">Search</button>
+              <input class="form-control me-2" id = "gfg" type="text" class="new" onclick="record()" placeholder="Search"  aria-label="Search">
+              <button class="btn btn-outline-success" id="speak" type="text">Search</button>
+
             </form>
           </div>
         </div>
@@ -101,7 +120,12 @@
           </div>
 
           <br>
-
+          <div class="speechnow">
+           <label for="Speech Recognition">Country name</label>
+           <input type="text" name="" id="speechToText" placeholder="Speak Something" onclick="record()">
+          </div>
+          <br>
+          <br>
           <table class="table table-striped" id="mytable">
           <thead>
             <tr>
@@ -144,9 +168,10 @@
   </div>
 
   </body>
+ 
 
 
-  <script>
+<script>
     
     $(document).ready(function() {
       $("#gfg").on("keyup", function() {
@@ -156,8 +181,55 @@
               .toLowerCase().indexOf(value) > -1)
           });
       });
-  });
-      </script>c
+  });  
+
+   $(document).ready(function() {
+      $("#speechToText").on("keyup", function() {
+          var value = $(this).val().toLowerCase();
+          $("#geeks tr").filter(function() {
+              $(this).toggle($(this).text()
+              .toLowerCase().indexOf(value) > -1)
+          });
+      });
+  });  
+
+
+
+</script>
+
+
+    <script>
+        function record(){
+            var recognition = new webkitSpeechRecognition();
+            recognition.lang = "en-GB";
+
+            recognition.onresult = function(event) {
+                // console.log(event);
+                document.getElementById('gfg').value = event.results[0][0].transcript.toLowerCase();
+            }
+            recognition.start();
+
+        }
+    </script>
+
+     <script>
+        function record(){
+            var recognition = new webkitSpeechRecognition();
+            recognition.lang = "en-GB";
+
+            recognition.onresult = function(event) {
+                // console.log(event);
+                document.getElementById('speechToText').value = event.results[0][0].transcript.toLowerCase();
+            }
+            recognition.start();
+
+        }
+    </script>
+  
+  
+
+
+     
 </html>
 
 

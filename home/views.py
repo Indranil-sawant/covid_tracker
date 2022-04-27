@@ -5,7 +5,7 @@ from django.shortcuts import render
 from django.http import HttpResponse as HT
 import requests
 from home.models  import Data
-
+import datetime
 
 
 
@@ -13,8 +13,9 @@ def index(request):
     r = requests.get('https://api.covid19api.com/summary')
     all = r.json()["Global"]
     primary_data = r.json()["Countries"]
+    date = datetime.datetime.now()
     return render(request, 'index.html', {'all':all,
-    'primary_data': primary_data,})
+    'primary_data': primary_data,'date':date})
    
 
 def sec(request):
