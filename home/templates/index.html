@@ -19,6 +19,9 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" ></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> 
+         <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+       
        
        
         
@@ -31,7 +34,7 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li id="home" class="nav-item">
-                <a class="nav-link active" aria-current="page"  href="">Home</a>
+                <a class="nav-link active" aria-current="page"  href="{% url 'home'%}">Home</a>
               </li>
               <li id="home" class="nav-item">
                 <a class="nav-link"  href="https://covid19.who.int/">More Info</a>
@@ -45,9 +48,9 @@
                  </a>
 
   <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-    <li><a class="dropdown-item" href="">India</a></li>
-    <li><a class="dropdown-item" href="">Other countries</a></li>
-    <li><a class="dropdown-item" href="">More info</a></li>
+    <li><a class="dropdown-item" href="https://www.cowin.gov.in/">India</a></li>
+    <li><a class="dropdown-item" href="https://www.who.int/emergencies/diseases/novel-coronavirus-2019/question-and-answers-hub/q-a-detail/coronavirus-disease-(covid-19)-vaccines?adgroupsurvey={adgroupsurvey}&gclid=Cj0KCQjw06OTBhC_ARIsAAU1yOVlck7FsZsfjFyp1_4ELep0IOKNbmRC5FDXadw24a8cv-vMHokWDroaAmrJEALw_wcB">Other countries</a></li>
+    <li><a class="dropdown-item" href="https://www.who.int/emergencies/diseases/novel-coronavirus-2019/covid-19-vaccines">More info</a></li>
   </ul> 
 </div>
               </li>
@@ -65,7 +68,7 @@
         </div>
       </nav>
         
-        <br>
+      
 
  <div class="container-fluid" id="1"> 
             
@@ -83,7 +86,7 @@
             <div class="card-body">
               <h5 class="card-title">Total Confirmed Cases</h5>
               <p class="card-text">{{all.TotalConfirmed}}</p>
-              <a href="" class="btn btn-primary">More</a>
+              <a href="https://www.google.com/search?q=total+confirmed+cases+of+coronavirus&oq=total+confirmed+cases+of+coronavirus+&aqs=chrome.0.69i59j0i512l4j0i22i30l5.7246j0j7&sourceid=chrome&ie=UTF-8" class="btn btn-primary">More</a>
             </div>
             </div>
             <div class="card col m-2" style="width: 15rem;">
@@ -97,7 +100,7 @@
                 <div class="card-body">
                   <h5 class="card-title">Total Deaths</h5>
                   <p class="card-text">{{all.TotalDeaths}}</p>
-                  <a href="" class="btn btn-primary">More</a>
+                  <a href="https://www.google.com/search?q=total+deaths+due+to+coronavirus&sxsrf=ALiCzsYwTPQlF_GKcKuOam2lZXWVRMe5zw%3A1651121957267&ei=JR9qYqf-D4WK0AT_56SwBg&ved=0ahUKEwjnpPnN_LX3AhUFBZQKHf8zCWYQ4dUDCA4&uact=5&oq=total+deaths+due+to+coronavirus&gs_lcp=Cgdnd3Mtd2l6EAMyBggAEAcQHjIGCAAQBxAeMgUIABCABDIGCAAQBxAeMgYIABAHEB4yBQgAEIAEMgYIABAHEB4yBggAEAcQHjIFCAAQgAQyBAgAEB46BwgjELADECc6BwgAEEcQsAM6CggAEEcQsAMQyQM6CAgAEJIDELADSgQIQRgASgQIRhgAUP0OWIITYLAWaAJwAXgAgAGUA4gB4QuSAQUzLTMuMZgBAKABAcgBCsABAQ&sclient=gws-wiz" class="btn btn-primary">More</a>
                 </div>
             </div>
             <div class="card col m-2" style="width: 15rem;">
@@ -122,9 +125,9 @@
           <br>
           <div class="speechnow">
            <label for="Speech Recognition">Country name</label>
-           <input type="text" name="" id="speechToText" placeholder="Speak Something" onclick="record()">
+           <input type="text" name="" id="speechToText" placeholder=" click here " onclick="record()">
           </div>
-          <br>
+          
           <br>
           <table class="table table-striped" id="mytable">
           <thead>
@@ -161,14 +164,21 @@
 
         </table>
 
-  
+
+ 
+
         
     </div>    
           
   </div>
 
+  
+       
+   
+   
   </body>
- 
+
+
 
 
 <script>

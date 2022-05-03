@@ -9,6 +9,19 @@ import datetime
 
 
 
+def home(request):
+     r = requests.get('https://api.covid19api.com/summary')
+     all = r.json()["Global"]
+     primary_data = r.json()["Countries"]
+     date = datetime.datetime.now()
+     return render(request, 'homepage.html', {'all':all,
+     'primary_data': primary_data,'date':date})
+
+
+     
+
+
+
 def index(request):
     r = requests.get('https://api.covid19api.com/summary')
     all = r.json()["Global"]
@@ -16,6 +29,7 @@ def index(request):
     date = datetime.datetime.now()
     return render(request, 'index.html', {'all':all,
     'primary_data': primary_data,'date':date})
+    
    
 
 def sec(request):
@@ -48,9 +62,5 @@ def search(request):
             country_data.save()
             all_countries = Data.objects.all().order_by('name')
     return render (request , 'index.html', {'all_countries':all_countries})
-        
-def home(request):
-    return render(request, 'homepage.html')
-
 
 

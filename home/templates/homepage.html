@@ -1,70 +1,202 @@
 <!DOCTYPE html>
+
 <html>
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title></title>
+        <title>Covid Crawler</title>
         <meta name="description" content="">
-        {% load static %}
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        {% load static%}
+        <link rel="stylesheet" href="{% static 'home.css' %}">
+        <link rel="stylesheet" href="{% static 'index.css' %}">
+
+        <link rel="stylesheet" href="{% static 'index.js' %}">
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4"></script>
+        <script src=
+        "https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js">
+            </script>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-        <link rel="stylesheet" href="{% static 'home.css'%}">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" >
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" ></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> 
+     <meta name="description" content="Bootstrap.">  
+<link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">   
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<link rel="stylesheet" href="http://cdn.datatables.net/1.10.2/css/jquery.dataTables.min.css"></style>
+<script type="text/javascript" src="http://cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+  <!-- Step 1 - Include the fusioncharts core library -->
+    <script type="text/javascript" src="https://cdn.fusioncharts.com/fusioncharts/latest/fusioncharts.js"></script>
+    <!-- Step 2 - Include the fusion theme -->
+    <script type="text/javascript" src="https://cdn.fusioncharts.com/fusioncharts/latest/themes/fusioncharts.theme.fusion.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+       
+       
+        
     </head>
     <body>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+          <h1> <a class="navbar-brand" href="#">Covid Tracker</a> </h1>
+          
+          <class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li id="home" class="nav-item">
+                <a class="nav-link active" aria-current="page"  href="{% url 'home'%}">Home</a>
+              </li>
+              <li id="home" class="nav-item">
+                <a class="nav-link"  href="https://covid19.who.int/">More Info</a>
+              </li>
+              <li id="home" class="nav-item">
+                <a class="nav-link"  href="{% url 'index'%}">Voice assitance</a>
+              </li>
+      
+            
+               <li id="home" class="nav-item">
+                <div class="dropdown" id+"drop">
+                 <a class="btn btn-light dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                             Vaccines
+                 </a>
+
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+    <li><a class="dropdown-item" href="https://www.cowin.gov.in/">India</a></li>
+    <li><a class="dropdown-item" href="https://www.who.int/emergencies/diseases/novel-coronavirus-2019/question-and-answers-hub/q-a-detail/coronavirus-disease-(covid-19)-vaccines?adgroupsurvey={adgroupsurvey}&gclid=Cj0KCQjw06OTBhC_ARIsAAU1yOVlck7FsZsfjFyp1_4ELep0IOKNbmRC5FDXadw24a8cv-vMHokWDroaAmrJEALw_wcB">Other countries</a></li>
+    <li><a class="dropdown-item" href="https://www.who.int/emergencies/diseases/novel-coronavirus-2019/covid-19-vaccines">More info</a></li>
+  </ul> 
+</div>
+              </li>
+
+               <li class="nav-item">
+                <h5 class="nav-link ">{{date}}</h5>
+              </li>
+            </ul>
+            
+          
+        </div>
+      </nav>
         
-        <div class="nav">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="container-fluid">
-              <a class="navbar-brand" href="#">Navbar</a>
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-              <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                  <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Home</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">Features</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">Pricing</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link disabled">Disabled</a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </nav>
+      
+
+        
+          
+          <br>
+
+  
+          <div class="covid_chart">
+             <canvas id="chart" width="50" height="50"></canvas>
+          </div>
+
          
+  \
+  
+
+
+    
+
+
+  
+          <div class="table">
+          <table class="table table-striped" id="myTable">
+          <thead>
+            <tr>
+              <th>SR NO.</th>
+              <th>COUNTRY</th>
+              <th>COUNTRY CODE</th>
+              <th>NEW CONFIRMED</th>
+              <th>TOTAL CONFIRMED</th>
+              <th>NEW DEATHS</th>
+              <th>TOTAL DEATHS</th>
+              <th>NEW RECOVERED</th>
+              <th>TOTAL RECOVERED</th>
+              <th>DATE</th>
+            </tr>
+          </thead>
+          
+          <tbody>
+            {% for l in primary_data %}
+            <tr>
+              <td>{{forloop.counter}}</td>
+              <td>{{ l.Country}}</td>
+              <td>{{ l.CountryCode}}</td>
+              <td>{{ l.NewConfirmed}}</td>
+              <td>{{l.TotalConfirmed}}</td>
+              <td>{{ l.NewDeaths}}</td>
+              <td>{{ l.TotalDeaths}}</td>
+              <td>{{ l.NewRecovered}}</td>
+              <td>{{ l.TotalRecovered}}</td>
+              <td>{{ l.Date}}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+
+        </table>
+      </div>
+  
         
-        </div>
-        <div class="row">
-        <div class="card" style="width: 18rem;">
-            <img src="..." class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-          </div>
-          <div class="card" style="width: 18rem;">
-            <img src="..." class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-          </div>
-          <div class="card" style="width: 18rem;">
-            <img src="..." class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-        </div>
-          </div>
-    </body>
+    </div>    
+          
+  </div>
+
+
+
+
+   <footer>
+            <div class="social"><a href="#"><i class="icon ion-social-instagram"></i></a><a href="#"><i class="icon ion-social-snapchat"></i></a><a href="#"><i class="icon ion-social-twitter"></i></a><a href="#"><i class="icon ion-social-facebook"></i></a></div>
+            <ul class="list-inline">
+                <li class="list-inline-item"><a href="https://www.facebook.com/indranil.sawant.7"><ion-icon name="logo-facebook"></ion-icon></a></li>
+                <li class="list-inline-item"><a href="https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=indranilsawant07@gmail.com"><ion-icon name="logo-google"></ion-icon></a></li>
+                <li class="list-inline-item"><a href="#"><ion-icon name="logo-instagram"></ion-icon></a></li>
+                <li class="list-inline-item"><a href="https://github.com/Indranil-sawant"><ion-icon name="logo-github"></ion-icon></a></li>
+                <li class="list-inline-item"><a href="https://www.linkedin.com/in/indranil-sawant-9b3bb7189/"><ion-icon name="logo-linkedin"></ion-icon></a></li>
+            </ul>
+            <p class="copyright">IS © 2022</p>
+        </footer>
+    </div>
+  
+  </body>
+ 
+
+
+    <script>
+    $(document).ready(function(){
+    $('#myTable').dataTable();
+      });
+      
+    </script>
+
+    <script>
+    let ctx = document.getElementById("chart").getContext("2d");
+
+let chart = new Chart(ctx, {
+  type: "bar",
+  data: {
+     labels: ["New Confirmed Cases", "Total Confirmed Cases", "New Deaths", "Total Deaths","New Recovered","Total Recovered"],
+     datasets: [
+        {
+          label: "Gross volume ($)",
+          backgroundColor: "#ACB992",
+          borderColor: "#417690",
+          data: [{{all.NewConfirmed}}, {{all.TotalConfirmed}}, {{all.NewDeaths}}, {{all.TotalDeaths}},{{all.NewRecovered}},{{all.TotalRecovered}}]
+        }
+     ]
+  },
+  options: {
+     title: {
+        text: "Covid cases till date",
+        display: true
+     }
+  }
+});
+    </script>
+  
+  
+
+
+     
 </html>
+
+

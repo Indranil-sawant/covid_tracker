@@ -3,11 +3,12 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('', views.index , name='index'),
+    
+    path('', views.home , name='home'),
     
     path('sec/', views.search, name='sec'),
-
-    path('home/', views.home , name='home'),
+    
+    path('voice/', views.index , name='index'),
      
 
 ]
