@@ -1,1 +1,1 @@
-web: gunicorn covid_crawler.wsgi 
+web: gunicorn covid_crawler.wsgi --log-file -
