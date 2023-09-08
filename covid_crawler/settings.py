@@ -29,7 +29,7 @@ SECRET_KEY = 'django-insecure-r+lrk#-#kd=uato0uzun(t1x^5&o1j5u0v-o)ermr5h%rp-0r@
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['indranil-sawant.github.io/covid_tracker/']
 
 
 # Application definition
